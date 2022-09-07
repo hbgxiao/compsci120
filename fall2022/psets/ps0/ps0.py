@@ -29,13 +29,13 @@ class BTvertex:
 # ... tree rooted at vertex v to the size of that subtree
 # Runtime: O(n)
 def calculate_sizes(v):
-   if v == None:
-       return 0
-   elif v.right == v.left == None:
-       v.size = 1
-   else:
-       v.size = calculate_sizes(v.left) + calculate_sizes(v.right) + 1
-   return v.size
+    if v == None:
+        return 0
+    elif v.right == v.left == None:
+        v.size = 1
+    else:
+        v.size = calculate_sizes(v.left) + calculate_sizes(v.right) + 1
+    return v.size
   
 #
 # Problem 1c
@@ -48,21 +48,23 @@ def calculate_sizes(v):
 # Runtime: O(h)
 # do we need to check??
 def find_vertex(r):
-   if r == None:
-       return None
-   elif r.left == None and r.right != None:
-       if r.right.size <= r.size/2:
-           return r
-       else:
-           return find_vertex(r.right)
-   elif r.right == None and r.left != None:
-       if r.left.size <= r.size/2:
-           return r
-       else:
-           return find_vertex(r.left)
-   elif r.left.size <= r.size/2 and r.right.size <= r.size/2:
-       return r
-   elif r.left.size > r.right.size:
-       find_vertex(r.left)
-   else:
-       find_vertex(r.right)
+    if r == None:
+        return None
+    elif r.left == None and r.right != None:
+        if r.right.size <= r.size/2:
+            return r
+        else:
+            return find_vertex(r.right)
+    elif r.right == None and r.left != None:
+        if r.left.size <= r.size/2:
+            return r
+        else:
+            return find_vertex(r.left)
+    elif r.left.size <= r.size/2 and r.right.size <= r.size/2:
+        return r
+    elif r.left.size > r.right.size:
+        find_vertex(r.left)
+    else:
+        find_vertex(r.right)
+
+    pass
